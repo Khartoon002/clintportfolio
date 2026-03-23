@@ -1,5 +1,8 @@
-import Link from "next/link";
+import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { getProjectBySlug, projects } from "@/lib/projectsData";
+import { siteConfig } from "@/lib/site-config";
+import { absoluteUrl, getSiteUrl } from "@/lib/site-url";
 import ProjectDetailClient from "./ProjectDetailClient";
 
 type ProjectDetailPageProps = {
@@ -7,6 +10,9 @@ type ProjectDetailPageProps = {
     slug: string;
   }>;
 };
+
+const siteUrl = getSiteUrl();
+const socialImage = absoluteUrl(siteConfig.socialImage) ?? siteConfig.socialImage;
 
 function slugToTitle(slug: string): string {
   const words = slug
@@ -29,41 +35,122 @@ export function generateStaticParams() {
   }));
 }
 
-export default async function ProjectDetailPage({
+export async function generateMetadata({
   params,
-}: ProjectDetailPageProps) {
+}: ProjectDetailPageProps): Promise<Metadata> {
   const { slug } = await params;
-
   const project = getProjectBySlug(slug);
   const fallbackTitle = slugToTitle(slug);
 
   if (!project) {
-    return (
-      <section className="anchor">
-        <div className="sectionHead">
-          <h2>{fallbackTitle}</h2>
-          <p>This project is not configured yet.</p>
-        </div>
-
-        <div className="panel">
-          <p style={{ margin: 0, color: "rgba(244,241,200,.70)" }}>
-            The details for <strong>{fallbackTitle}</strong> are not available yet.
-            Check back later or return to the main projects page.
-          </p>
-        </div>
-
-        <div className="divider" style={{ marginTop: 18 }}>
-          <strong>More projects</strong>
-          <span>
-            <Link href="/projects">Back to all builds -&gt;</Link>
-          </span>
-        </div>
-      </section>
-    );
+    return {
+      title: fallbackTitle,
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
   }
+
+  const projectUrl = siteUrl ? `${siteUrl}/projects/${project.slug}` : undefined;
+  const projectImage = absoluteUrl(project.imageUrl) ?? project.imageUrl;
+  const description = `${project.desc} Case study by a web developer in Nigeria using ${project.stack.join(
+    ", "
+  )}.`;
+
+  return {
+    title: `${project.title} Case Study`,
+    description,
+    keywords: [
+      ...siteConfig.keywords,
+      `${project.title} case study`,
+      ...project.stack,
+    ],
+    alternates: projectUrl
+      ? {
+          canonical: `/projects/${project.slug}`,
+        }
+      : undefined,
+    openGraph: {
+      title: `${project.title} Case Study | ${siteConfig.siteName}`,
+      description,
+      url: projectUrl,
+      images: [
+        {
+          url: projectImage,
+          alt: `${project.title} case study preview`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${project.title} Case Study | ${siteConfig.siteName}`,
+      description,
+      images: [projectImage || socialImage],
+    },
+  };
+}
+
+export default async function ProjectDetailPage({
+  params,
+}: ProjectDetailPageProps) {
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
+
+  if (!project) {
+    notFound();
+  }
+
+  const projectUrl = absoluteUrl(`/projects/${project.slug}`) ?? `/projects/${project.slug}`;
+  const projectImage = absoluteUrl(project.imageUrl) ?? project.imageUrl;
+  const breadcrumbStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: absoluteUrl("/") ?? "/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Projects",
+        item: absoluteUrl("/projects") ?? "/projects",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: project.title,
+        item: projectUrl,
+      },
+    ],
+  };
+  const caseStudyStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    name: `${project.title} Case Study`,
+    description: project.summary,
+    image: projectImage,
+    url: projectUrl,
+    creator: {
+      "@type": "Person",
+      name: siteConfig.developerName,
+    },
+    keywords: project.stack,
+    inLanguage: siteConfig.language,
+  };
 
   return (
     <section className="anchor">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([breadcrumbStructuredData, caseStudyStructuredData]),
+        }}
+      />
+
       <div className="sectionHead">
         <h2>{project.title}</h2>
         <p>{project.desc}</p>

@@ -13,7 +13,10 @@ export default function Projects() {
           <br />
           <span className="toneB">real solutions.</span>
         </h2>
-        <p>Production applications built end-to-end.</p>
+        <p>
+          Selected web application builds by a Nigeria-based full-stack web
+          developer.
+        </p>
       </div>
 
       <div className="projGrid">
@@ -27,11 +30,19 @@ export default function Projects() {
           <span className="text">See more projects</span>
           <span className="circle" aria-hidden />
         </Link>
+
+        <Link className="btn animated-button" href="/web-developer-in-nigeria">
+          <span className="text">See services in Nigeria</span>
+          <span className="circle" aria-hidden />
+        </Link>
       </div>
 
       <div className="divider" style={{ marginTop: 18 }}>
         <strong>Need a full-stack solution?</strong>
-        <span>Share your requirements and I&apos;ll architect the right build.</span>
+        <span>
+          Share your requirements and I&apos;ll architect the right build for
+          your business.
+        </span>
       </div>
     </section>
   );

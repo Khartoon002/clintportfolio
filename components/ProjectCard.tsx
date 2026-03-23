@@ -9,12 +9,16 @@ type ProjectCardProps = {
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <article className="proj">
-      <Link href={`/projects/${project.slug}`} className="projMediaLink">
+      <Link
+        href={`/projects/${project.slug}`}
+        className="projMediaLink"
+        aria-label={`Open ${project.title} case study`}
+      >
         <div className="peekWrap">
           <Image
             className="projectImage"
             src={project.imageUrl}
-            alt={`${project.title} preview`}
+            alt={`${project.title} web application case study preview`}
             fill
             sizes="(max-width: 980px) 100vw, 50vw"
           />
@@ -50,8 +54,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           <Link
             className="btn btnSm btnPrimary animated-button"
             href={`/projects/${project.slug}`}
+            aria-label={`View ${project.title} case study`}
           >
-            <span className="text">Explore project</span>
+            <span className="text">View {project.title}</span>
             <span className="circle" aria-hidden />
           </Link>
 
@@ -61,6 +66,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`Open live demo for ${project.title}`}
             >
               <span className="text">Open live</span>
               <span className="circle" aria-hidden />

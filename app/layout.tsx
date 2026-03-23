@@ -1,12 +1,78 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Script from "next/script";
+import { siteConfig } from "@/lib/site-config";
+import { absoluteUrl, getSiteUrl } from "@/lib/site-url";
 import "./globals.css";
 
+const siteUrl = getSiteUrl();
+const socialImage = absoluteUrl(siteConfig.socialImage) ?? siteConfig.socialImage;
+
 export const metadata: Metadata = {
-  title: "ClintDoesDev | Full-stack Developer",
-  description:
-    "Portfolio for ClintDoesDev featuring full-stack product builds, polished interfaces, and production-ready web solutions.",
+  metadataBase: siteUrl ? new URL(siteUrl) : undefined,
+  title: {
+    default: siteConfig.defaultTitle,
+    template: `%s | ${siteConfig.siteName}`,
+  },
+  description: siteConfig.defaultDescription,
+  applicationName: siteConfig.siteName,
+  referrer: "origin-when-cross-origin",
+  keywords: [...siteConfig.keywords],
+  authors: [{ name: siteConfig.developerName }],
+  creator: siteConfig.developerName,
+  publisher: siteConfig.siteName,
+  category: "technology",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  alternates: siteUrl
+    ? {
+        canonical: "/",
+        languages: {
+          "en-NG": "/",
+        },
+      }
+    : undefined,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: siteConfig.locale,
+    url: siteUrl,
+    siteName: siteConfig.siteName,
+    title: siteConfig.defaultTitle,
+    description: siteConfig.defaultDescription,
+    images: [
+      {
+        url: socialImage,
+        width: 1080,
+        height: 1080,
+        alt: "Clinton, web developer in Nigeria",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.defaultTitle,
+    description: siteConfig.defaultDescription,
+    images: [socialImage],
+  },
+  other: {
+    "geo.region": "NG",
+    "geo.placename": siteConfig.countryName,
+    "target-country": siteConfig.countryName,
+  },
 };
 
 export default function RootLayout({
@@ -15,7 +81,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang={siteConfig.language}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
