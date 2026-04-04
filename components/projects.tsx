@@ -8,6 +8,9 @@ export default function Projects() {
   return (
     <section id="projects" className="anchor">
       <div className="sectionHead">
+        <span className="sectionNum" aria-hidden>
+          03
+        </span>
         <h2>
           <span className="toneA">Featured work,</span>
           <br />

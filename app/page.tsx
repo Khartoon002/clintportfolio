@@ -26,41 +26,61 @@ const SOCIAL_IMAGE = WEBSITE_URL
 const DEFAULT_CONTACT_MESSAGE =
   "Hi Clinton, I'd like to discuss a new project with you.";
 
+const stats = [
+  { number: "3+", label: "Years building" },
+  { number: "15+", label: "Projects shipped" },
+  { number: "4", label: "Countries served" },
+  { number: "48h", label: "Avg response time" },
+];
+
 const skills = [
   {
     glyph: "RE",
     title: "React",
+    pill: "core",
     desc: "Component architecture, hooks, state management, and performance optimization.",
   },
   {
     glyph: "NX",
     title: "Next.js",
+    pill: "core",
     desc: "SSR, SSG, App Router patterns, route design, and polished delivery.",
   },
   {
     glyph: "TS",
     title: "TypeScript",
+    pill: "core",
     desc: "Safer refactors, clearer contracts, and reliable developer experience.",
   },
   {
     glyph: "ND",
     title: "Node.js",
+    pill: "backend",
     desc: "APIs, background tasks, middleware logic, and scalable server workflows.",
   },
   {
     glyph: "DB",
     title: "Databases",
+    pill: "backend",
     desc: "Schema design, ORM-driven workflows, indexing, and query optimization.",
+  },
+  {
+    glyph: "W3",
+    title: "Web3 & Blockchain",
+    pill: "specialist",
+    desc: "Smart contracts, NFT platforms, wallet integration, and decentralised app architecture.",
   },
   {
     glyph: "UI",
     title: "UI Systems",
+    pill: "design",
     desc: "Responsive layouts, animations, accessibility, and premium visual polish.",
   },
   {
-    glyph: "SEO",
-    title: "SEO and Performance",
-    desc: "Metadata, structured data, crawl-friendly pages, and fast-loading delivery.",
+    glyph: "PY",
+    title: "Paystack & Payments",
+    pill: "specialist",
+    desc: "African payment flows, subscription billing, webhook handling, and multi-country support.",
   },
 ];
 
@@ -97,7 +117,7 @@ const homeStructuredData = {
       "@id": personId,
       name: siteConfig.developerName,
       alternateName: siteConfig.siteName,
-      jobTitle: "Full-stack Web Developer",
+      jobTitle: siteConfig.jobTitle,
       description: siteConfig.defaultDescription,
       image: SOCIAL_IMAGE,
       url: WEBSITE_URL,
@@ -227,33 +247,29 @@ export default function HomePage() {
       <section id="home" className="hero anchor">
         <div className="heroInner">
           <div className="chipRow">
-            <span className="chip">Web Developer in Nigeria</span>
-            <span className="chip">React and Next.js</span>
-            <span className="chip">Node.js APIs</span>
-            <span className="chip">SEO-ready builds</span>
+            <span className="chip">Full-stack + Web3</span>
+            <span className="chip">Africa-focused</span>
+            <span className="chip">Product-minded</span>
+            <span className="chip">Fast delivery</span>
           </div>
 
-          <h1 className="heroTitle" aria-label="Web developer in Nigeria">
-            <span className="heroTitleLine line1" data-text="Web developer">
-              <span className="fill">Web developer</span>
+          <h1 className="heroTitle" aria-label="I build products that perform.">
+            <span className="heroTitleLine line1" data-text="I build products">
+              <span className="fill">I build products</span>
               <span className="shine" aria-hidden />
             </span>
             <br />
-            <span className="heroTitleLine line2" data-text="in Nigeria.">
-              <span className="fill">in Nigeria.</span>
+            <span className="heroTitleLine line2" data-text="that perform.">
+              <span className="fill">that perform.</span>
               <span className="shine" aria-hidden />
             </span>
           </h1>
 
           <p className="sub">
-            I&apos;m{" "}
-            <span style={{ color: "var(--yellow)", fontWeight: 700 }}>
-              Clinton
-            </span>{" "}
-            - a Nigeria-based full-stack web developer who builds fast websites,
-            scalable web applications, and polished user experiences for founders,
-            startups, and businesses. From database design to deployment, I
-            deliver SEO-ready products that are built to perform under pressure.
+            I&apos;m <span style={{ color: "var(--yellow)", fontWeight: 700 }}>Clinton</span>
+            {" "}- I design and build digital products end to end. Full-stack
+            development, Web3 integration, clean APIs. Based in Nigeria, shipping
+            for clients across Africa and beyond.
           </p>
 
           <div className="heroPortrait">
@@ -265,13 +281,26 @@ export default function HomePage() {
               priority
               sizes="(max-width: 768px) 78vw, 360px"
             />
+            <div className="portraitBadge">
+              <span className="portraitDot" />
+              Clinton | Developer
+            </div>
           </div>
 
+          <hr
+            style={{
+              border: "none",
+              borderTop: "1px solid rgba(255,255,255,.06)",
+              margin: "4px auto",
+              width: "min(340px,74vw)",
+            }}
+          />
+
           <div className="heroBadges">
-            <span className="badge">Type-safe APIs</span>
+            <span className="badge">Web3 & NFT platforms</span>
             <span className="badge">SEO-friendly pages</span>
             <span className="badge">Core Web Vitals focus</span>
-            <span className="badge">Premium frontends</span>
+            <span className="badge">Paystack integration</span>
           </div>
 
           <div className="ctaRow">
@@ -290,28 +319,58 @@ export default function HomePage() {
             </button>
           </div>
 
-          <div className="divider" style={{ marginTop: 22 }}>
-            <strong>What sets me apart</strong>
-            <span>
-              React frontends | Node.js APIs | Database architecture | SEO-ready
-              delivery
+          <div
+            className="divider"
+            style={{ marginTop: 24, flexDirection: "column", gap: 6, textAlign: "center" }}
+          >
+            <strong>Track record</strong>
+            <span style={{ fontSize: 14 }}>
+              3+ years | 15+ projects shipped | clients across Africa and the diaspora
             </span>
           </div>
         </div>
       </section>
 
+      <div className="marqueeWrap" aria-hidden>
+        <div className="marqueeTrack">
+          {[
+            "React","Next.js","TypeScript","Node.js","Web3","Blockchain",
+            "PostgreSQL","MongoDB","Solidity","Ethers.js","Paystack","Tailwind",
+            "Docker","Vercel","REST APIs","NFT Platforms","SaaS","Full-stack",
+            "React","Next.js","TypeScript","Node.js","Web3","Blockchain",
+            "PostgreSQL","MongoDB","Solidity","Ethers.js","Paystack","Tailwind",
+            "Docker","Vercel","REST APIs","NFT Platforms","SaaS","Full-stack"
+          ].map((item, i) => (
+            <span key={i} className="marqueeItem">{item}</span>
+          ))}
+        </div>
+      </div>
+
+      <section id="stats" className="anchor statsSection">
+        <div className="statsGrid">
+          {stats.map((stat) => (
+            <div className="statCard" key={stat.label}>
+              <span className="statNum">{stat.number}</span>
+              <span className="statLabel">{stat.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section id="about" className="anchor">
         <div className="sectionHead">
+          <span className="sectionNum" aria-hidden>01</span>
           <h2>
-            <span className="toneA">Nigeria-based developer,</span>
+            <span className="toneA">Product builder.</span>
             <br />
-            <span className="toneB">clear solutions.</span>
+            <span className="toneB">Problem solver.</span>
           </h2>
           <p>
-            I build complete web applications for teams that need a reliable web
-            developer in Nigeria, from RESTful APIs and database schemas to
-            responsive frontends with premium interactions. Backend to UI, I handle
-            the whole product flow.
+            I started building for the web to create things that didn&apos;t exist
+            yet in Nigeria. Today I work with founders, startups, and businesses
+            to ship complete digital products - from database architecture to
+            polished frontends. I also build Web3 platforms: NFT marketplaces,
+            crypto dashboards, and wallet-integrated apps.
           </p>
         </div>
 
@@ -324,53 +383,48 @@ export default function HomePage() {
               lineHeight: 1.6,
             }}
           >
-            My approach is simple: architect the data layer, build dependable APIs,
-            craft polished interfaces, and ship with confidence. The goal is
-            maintainable, search-friendly software that scales with the business
-            behind it.
+            My approach: understand the problem first, architect the right
+            solution, then build and ship with precision. Every project I take on
+            gets full-stack attention - backend, API, database, UI - delivered as
+            one coherent product.
           </p>
         </div>
 
-        <div className="panel" style={{ marginTop: 16 }}>
-          <p
-            style={{
-              margin: 0,
-              color: "rgba(244,241,200,.70)",
-              fontSize: 17,
-              lineHeight: 1.6,
-            }}
-          >
-            Looking specifically for a web developer in Nigeria? I put together a
-            focused page covering my process, stack, and the kinds of web products
-            I build for businesses and founders.
-          </p>
-
-          <div
-            className="ctaRow"
-            style={{ justifyContent: "flex-start", marginTop: 16 }}
-          >
-            <Link
+        <div className="panel tiktokSection" style={{ marginTop: 14 }}>
+          <div className="tiktokPanel">
+            <div className="tiktokIcon" aria-hidden />
+            <div className="tiktokText">
+              <strong>@arrtdecoded on TikTok</strong>
+              <span>
+                Short-form history and creative content. Building on both screens - the code editor and the camera.
+              </span>
+            </div>
+            <a
               className="btn btnSm animated-button"
-              href="/web-developer-in-nigeria"
+              href="https://tiktok.com/@arrtdecoded"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ marginLeft: "auto", flexShrink: 0 }}
             >
-              <span className="text">Visit the Nigeria web developer page</span>
+              <span className="text">Follow</span>
               <span className="circle" aria-hidden />
-            </Link>
+            </a>
           </div>
         </div>
 
         <div className="divider" style={{ marginTop: 16 }}>
-          <strong>My commitment</strong>
-          <span>Clean code | Fast queries | Smooth UX | Scalable infrastructure</span>
+          <strong>My promise</strong>
+          <span>Clean code | Fast queries | Smooth UX | On-time delivery</span>
         </div>
       </section>
 
       <section id="skills" className="anchor">
         <div className="sectionHead">
+          <span className="sectionNum" aria-hidden>02</span>
           <h2>
-            <span className="toneA">The stack,</span>
+            <span className="toneA">What I use</span>
             <br />
-            <span className="toneB">I ship with.</span>
+            <span className="toneB">to get it done.</span>
           </h2>
           <p>
             Modern tools, production-grade thinking, SEO-aware delivery, and clean
@@ -385,7 +439,7 @@ export default function HomePage() {
                 <span className="skillGlyph" aria-hidden>
                   {skill.glyph}
                 </span>
-                <span className="pill">core</span>
+                <span className={`pill ${skill.pill}`}>{skill.pill}</span>
               </div>
               <h3>{skill.title}</h3>
               <p>{skill.desc}</p>
@@ -394,22 +448,27 @@ export default function HomePage() {
         </div>
 
         <div className="divider" style={{ marginTop: 18 }}>
-          <strong>Additional capabilities</strong>
-          <span>
-            PostgreSQL | MongoDB | Tailwind | Docker | Vercel and Railway
-            deployment
-          </span>
+          <strong>Also familiar with</strong>
+          <span>Solidity | Ethers.js | Docker | Tailwind | Vercel | Railway | MongoDB | PostgreSQL</span>
         </div>
       </section>
 
       <Projects />
 
+      <div style={{ textAlign: "center", marginTop: 24 }}>
+        <Link className="btn animated-button" href="/projects">
+          <span className="text">See all projects</span>
+          <span className="circle" aria-hidden />
+        </Link>
+      </div>
+
       <footer id="contact" className="anchor">
         <div className="end">
+          <span className="sectionNum" aria-hidden>04</span>
           <h2>
-            <span className="toneA">Let&apos;s build your next</span>
+            <span className="toneA">Have an idea?</span>
             <br />
-            <span className="toneB">website or web app.</span>
+            <span className="toneB">Let&apos;s ship it.</span>
           </h2>
 
           <p
@@ -421,11 +480,15 @@ export default function HomePage() {
               lineHeight: 1.55,
             }}
           >
-            If you need a web developer in Nigeria for a custom SaaS platform, an
-            e-commerce solution, or a data-driven dashboard, I handle everything
-            from database design and API development to polished frontends and
-            production deployment.
+            Whether it&apos;s a Web3 platform, a SaaS dashboard, a client site, or a
+            full product from scratch - I handle the entire build. Based in
+            Nigeria, available worldwide.
           </p>
+
+          <div className="availBadge">
+            <span className="availDot" />
+            Currently available for new projects
+          </div>
 
           <div className="ctaRow" style={{ marginTop: 18 }}>
             <button
@@ -446,23 +509,26 @@ export default function HomePage() {
             </button>
           </div>
 
-          <p
-            style={{
-              margin: "18px auto 0",
-              maxWidth: "60ch",
-              color: "rgba(244,241,200,.65)",
-              fontSize: 15,
-              lineHeight: 1.6,
-            }}
-          >
-            Want a more focused overview first? Visit the{" "}
-            <Link href="/web-developer-in-nigeria">web developer in Nigeria</Link>{" "}
-            page for services, fit, and delivery details.
-          </p>
+          <div className="socialRow" style={{ marginTop: 28 }}>
+            <a className="social" href="https://github.com/clintondcl" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/>
+              </svg>
+            </a>
+            <a className="social" href="https://linkedin.com/in/clinton-developer" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+            </a>
+            <a className="social" href="https://tiktok.com/@arrtdecoded" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
+              </svg>
+            </a>
+          </div>
 
           <div className="copyright">
-            &copy; {new Date().getFullYear()} Clinton. Nigeria-based full-stack
-            web developer.
+            &copy; {new Date().getFullYear()} Clinton | Full-stack &amp; Web3 Developer | Nigeria
           </div>
         </div>
       </footer>
@@ -474,14 +540,23 @@ export default function HomePage() {
             onClick={(event) => event.stopPropagation()}
           >
             <div className="contactModalHeader">
-              <h3>Let&apos;s Work</h3>
+              <h3>Drop me a message</h3>
               <button
                 type="button"
                 className="contactModalClose"
                 onClick={closeContactModal}
                 aria-label="Close"
               >
-                x
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M2 2l12 12M14 2L2 14" />
+                </svg>
               </button>
             </div>
 
