@@ -27,7 +27,7 @@ const DEFAULT_CONTACT_MESSAGE =
   "Hi Clinton, I'd like to discuss a new project with you.";
 
 const stats = [
-  { number: "3+", label: "Years building" },
+  { number: "2.5", label: "Years building" },
   { number: "15+", label: "Projects shipped" },
   { number: "4", label: "Countries served" },
   { number: "48h", label: "Avg response time" },
@@ -247,9 +247,9 @@ export default function HomePage() {
       <section id="home" className="hero anchor">
         <div className="heroInner">
           <div className="chipRow">
-            <span className="chip">Full-stack + Web3</span>
+            <span className="chip">Websites & Landing Pages</span>
+            <span className="chip">SaaS & Dashboards</span>
             <span className="chip">Africa-focused</span>
-            <span className="chip">Product-minded</span>
             <span className="chip">Fast delivery</span>
           </div>
 
@@ -267,9 +267,9 @@ export default function HomePage() {
 
           <p className="sub">
             I&apos;m <span style={{ color: "var(--yellow)", fontWeight: 700 }}>Clinton</span>
-            {" "}- I design and build digital products end to end. Full-stack
-            development, Web3 integration, clean APIs. Based in Nigeria, shipping
-            for clients across Africa and beyond.
+            {" "}- I build websites and digital products end to end. Landing pages,
+            marketing sites, SaaS platforms, dashboards, and everything in between.
+            Based in Nigeria, shipping for clients across Africa and beyond.
           </p>
 
           <div className="heroPortrait">
@@ -297,9 +297,9 @@ export default function HomePage() {
           />
 
           <div className="heroBadges">
-            <span className="badge">Web3 & NFT platforms</span>
-            <span className="badge">SEO-friendly pages</span>
-            <span className="badge">Core Web Vitals focus</span>
+            <span className="badge">Landing pages</span>
+            <span className="badge">SaaS & dashboards</span>
+            <span className="badge">SEO-ready builds</span>
             <span className="badge">Paystack integration</span>
           </div>
 
@@ -325,7 +325,7 @@ export default function HomePage() {
           >
             <strong>Track record</strong>
             <span style={{ fontSize: 14 }}>
-              3+ years | 15+ projects shipped | clients across Africa and the diaspora
+              2.5 years | 15+ projects shipped | clients across Africa and the diaspora
             </span>
           </div>
         </div>
@@ -366,11 +366,10 @@ export default function HomePage() {
             <span className="toneB">Problem solver.</span>
           </h2>
           <p>
-            I started building for the web to create things that didn&apos;t exist
-            yet in Nigeria. Today I work with founders, startups, and businesses
-            to ship complete digital products - from database architecture to
-            polished frontends. I also build Web3 platforms: NFT marketplaces,
-            crypto dashboards, and wallet-integrated apps.
+            I build whatever the project needs - a sharp landing page that converts,
+            a marketing site that ranks, a SaaS product that scales, or a full-stack
+            app with a real backend. Based in Nigeria, I work with founders, agencies,
+            and businesses who need things built properly and shipped fast.
           </p>
         </div>
 
@@ -383,10 +382,10 @@ export default function HomePage() {
               lineHeight: 1.6,
             }}
           >
-            My approach: understand the problem first, architect the right
-            solution, then build and ship with precision. Every project I take on
-            gets full-stack attention - backend, API, database, UI - delivered as
-            one coherent product.
+            My approach is simple: understand what you need, build it clean, and
+            ship it. Whether that&apos;s a one-page site or a multi-service platform with
+            auth, payments, and a dashboard - I handle the full scope and hand over
+            something you&apos;re proud to show.
           </p>
         </div>
 
@@ -394,14 +393,14 @@ export default function HomePage() {
           <div className="tiktokPanel">
             <div className="tiktokIcon" aria-hidden />
             <div className="tiktokText">
-              <strong>@arrtdecoded on TikTok</strong>
+              <strong>@clintdoesdev on TikTok</strong>
               <span>
                 Short-form history and creative content. Building on both screens - the code editor and the camera.
               </span>
             </div>
             <a
               className="btn btnSm animated-button"
-              href="https://tiktok.com/@arrtdecoded"
+              href="https://tiktok.com/@clintdoesdev"
               target="_blank"
               rel="noopener noreferrer"
               style={{ marginLeft: "auto", flexShrink: 0 }}
@@ -430,6 +429,23 @@ export default function HomePage() {
             Modern tools, production-grade thinking, SEO-aware delivery, and clean
             implementation.
           </p>
+        </div>
+
+        <div className="serviceChips">
+          {[
+            "Landing Pages",
+            "Marketing Sites",
+            "SaaS Platforms",
+            "Dashboards",
+            "Client Websites",
+            "APIs & Backends",
+            "E-commerce",
+            "Web3 (on request)",
+          ].map((s) => (
+            <span key={s} className="serviceChip">
+              {s}
+            </span>
+          ))}
         </div>
 
         <div className="skillsGrid">
@@ -480,9 +496,9 @@ export default function HomePage() {
               lineHeight: 1.55,
             }}
           >
-            Whether it&apos;s a Web3 platform, a SaaS dashboard, a client site, or a
-            full product from scratch - I handle the entire build. Based in
-            Nigeria, available worldwide.
+            Landing page, marketing site, SaaS platform, internal tool, or a full
+            product from zero - I build all of it. Based in Nigeria, available
+            worldwide.
           </p>
 
           <div className="availBadge">
@@ -520,7 +536,7 @@ export default function HomePage() {
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
               </svg>
             </a>
-            <a className="social" href="https://tiktok.com/@arrtdecoded" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <a className="social" href="https://tiktok.com/@clintdoesdev" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
               <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
                 <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/>
               </svg>

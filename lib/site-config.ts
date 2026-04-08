@@ -1,10 +1,10 @@
 export const siteConfig = {
   siteName: "ClintDoesDev",
   developerName: "Clinton",
-  jobTitle: "Full-stack Developer & Web3 Engineer",
+  jobTitle: "Full-stack Developer · Websites, SaaS & Digital Products",
   defaultTitle: "Web Developer in Nigeria | ClintDoesDev",
   defaultDescription:
-    "Nigeria-based full-stack web developer building fast websites, web apps, dashboards, APIs, and e-commerce platforms with Next.js, React, TypeScript, and Node.js.",
+    "Clinton is a full-stack developer based in Nigeria who builds landing pages, marketing sites, SaaS platforms, dashboards, and web applications for founders, startups, and businesses.",
   locale: "en_NG",
   language: "en-NG",
   countryName: "Nigeria",
@@ -19,6 +19,9 @@ export const siteConfig = {
     "Node.js developer Nigeria",
     "TypeScript developer Nigeria",
     "website developer Nigeria",
+    "landing page developer nigeria",
+    "website developer nigeria",
+    "business website nigeria",
     "web application developer Nigeria",
     "ecommerce website developer Nigeria",
     "dashboard developer Nigeria",
@@ -28,6 +31,9 @@ export const siteConfig = {
   ],
   serviceTypes: [
     "Custom website development",
+    "Landing Page Development",
+    "Marketing & Business Websites",
+    "Client Website Builds",
     "Full-stack web application development",
     "Next.js and React development",
     "Node.js API development",

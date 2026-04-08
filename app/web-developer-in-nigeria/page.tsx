@@ -171,7 +171,7 @@ export default function WebDeveloperInNigeriaPage() {
         <h1
           style={{
             margin: 0,
-            fontFamily: "var(--serif2)",
+            fontFamily: "var(--body)",
             fontSize: "clamp(34px, 4.2vw, 60px)",
             lineHeight: 1.02,
           }}
