@@ -182,7 +182,7 @@ export default function ProjectDetailClient({ project }: Props) {
             </ul>
             <p className="projectPanelNote" style={{ marginTop: 14 }}>
               Need a public demo or repo button here? Add `liveUrl` and `repoUrl`
-              in `lib/projectsData.ts`.
+              in `data/projects.json`.
             </p>
           </div>
         </div>

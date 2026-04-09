@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "xoinft-dashboard",
+    "title": "Xoi - NFT & Crypto Dashboard",
+    "desc": "A full Web3 platform with NFT trading UI, crypto portfolio tracking, a node-based drag-and-drop editor, and a real-time chat interface.",
+    "summary": "Xoi is a multi-surface Web3 product built across four interconnected templates - dashboard, landing page, chat UI, and a visual node editor. The design system uses Syne and DM Sans with a purple/cyan/gold accent palette for a premium crypto-native feel.",
+    "imageUrl": "/assets/project1.jpg",
+    "stack": ["Next.js", "React", "TypeScript", "Ethers.js", "Web3", "Tailwind"],
+    "highlights": [
+      "Drag-and-drop visual node editor for on-chain logic flows",
+      "Real-time chat UI with Web3 wallet-aware sessions",
+      "NFT portfolio dashboard with live price tracking"
+    ],
+    "duration": "4 weeks",
+    "role": "Full Web3 build",
+    "year": "2025"
+  },
+  {
+    "slug": "magnus-skill-mart",
+    "title": "Magnus Skill Mart",
+    "desc": "An NFT-inspired Web3 marketplace for skills and digital services, with wallet integration, mobile-responsive design, and a premium dark UI.",
+    "summary": "Magnus Skill Mart merges the aesthetics of NFT marketplaces with a practical skills trading platform. Built for magnus-skills-mart.com with full Web3 wallet connection, responsive layouts, and a bold visual identity.",
+    "imageUrl": "/assets/project2.jpg",
+    "liveUrl": "https://magnus-skills-mart.com",
+    "stack": ["HTML", "CSS", "JavaScript", "Web3.js", "Wallet Connect"],
+    "highlights": [
+      "Web3 wallet connection and on-chain skill verification",
+      "NFT-style skill card marketplace with filtering",
+      "Full mobile responsiveness across all breakpoints"
+    ],
+    "duration": "2 weeks",
+    "role": "Web3 frontend",
+    "year": "2025"
+  }
+]

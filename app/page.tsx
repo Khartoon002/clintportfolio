@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import Projects from "@/components/projects";
+import { projectStats } from "@/lib/projectsData";
 import { siteConfig } from "@/lib/site-config";
 
 type ContactChannel = "email" | "whatsapp";
@@ -28,7 +29,7 @@ const DEFAULT_CONTACT_MESSAGE =
 
 const stats = [
   { number: "2.5", label: "Years building" },
-  { number: "15+", label: "Projects shipped" },
+  { number: projectStats.totalLabel, label: "Projects shipped" },
   { number: "4", label: "Countries served" },
   { number: "48h", label: "Avg response time" },
 ];
@@ -325,7 +326,8 @@ export default function HomePage() {
           >
             <strong>Track record</strong>
             <span style={{ fontSize: 14 }}>
-              2.5 years | 15+ projects shipped | clients across Africa and the diaspora
+              2.5 years | {projectStats.totalLabel} projects shipped | clients across
+              Africa and the diaspora
             </span>
           </div>
         </div>
