@@ -10,6 +10,14 @@ const socialImage = absoluteUrl(siteConfig.socialImage) ?? siteConfig.socialImag
 
 export const metadata: Metadata = {
   metadataBase: siteUrl ? new URL(siteUrl) : undefined,
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/assets/clintdoesdev.png", type: "image/png" },
+    ],
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
   title: {
     default: siteConfig.defaultTitle,
     template: `%s | ${siteConfig.siteName}`,
@@ -31,7 +39,7 @@ export const metadata: Metadata = {
     ? {
         canonical: "/",
         languages: {
-          "en-NG": "/",
+          en: "/",
         },
       }
     : undefined,
@@ -58,7 +66,7 @@ export const metadata: Metadata = {
         url: socialImage,
         width: 1080,
         height: 1080,
-        alt: "Clinton, web developer in Nigeria",
+        alt: "Clinton, full-stack web developer",
       },
     ],
   },
@@ -67,11 +75,6 @@ export const metadata: Metadata = {
     title: siteConfig.defaultTitle,
     description: siteConfig.defaultDescription,
     images: [socialImage],
-  },
-  other: {
-    "geo.region": "NG",
-    "geo.placename": siteConfig.countryName,
-    "target-country": siteConfig.countryName,
   },
 };
 

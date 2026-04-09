@@ -47,7 +47,7 @@ const processSteps = [
 
 const faqItems = [
   {
-    question: "What can you build as a web developer in Nigeria?",
+    question: "What can you build as a full-stack web developer?",
     answer:
       "I build marketing websites, web applications, dashboards, admin panels, e-commerce experiences, and API-driven products.",
   },
@@ -62,22 +62,24 @@ const faqItems = [
       "Yes. My builds include strong metadata, structured data, crawl support, performance awareness, semantic content, and clean internal linking.",
   },
   {
-    question: "Can we work remotely across Nigeria?",
+    question: "Can we work remotely if I'm outside Nigeria?",
     answer:
-      "Yes. I can collaborate remotely with teams and business owners across Nigeria and support the project from planning through launch.",
+      "Yes. I work remotely with founders, teams, and business owners across different regions and can support the project from planning through launch.",
   },
 ];
 
 export const metadata: Metadata = {
-  title: "Web Developer in Nigeria",
+  title: "Web Developer in Nigeria | Available Worldwide",
   description:
-    "Hire a Nigeria-based web developer for custom websites, full-stack web apps, dashboards, e-commerce builds, and technical SEO-ready delivery.",
+    "Hire a full-stack web developer based in Nigeria and available worldwide for custom websites, SaaS platforms, dashboards, e-commerce builds, and technical SEO-ready delivery.",
   keywords: [
     ...siteConfig.keywords,
     "hire web developer in nigeria",
     "best web developer in nigeria",
     "website developer nigeria",
     "full stack web developer nigeria",
+    "remote web developer",
+    "full-stack web developer worldwide",
   ],
   alternates: siteUrl
     ? {
@@ -85,24 +87,24 @@ export const metadata: Metadata = {
       }
     : undefined,
   openGraph: {
-    title: "Web Developer in Nigeria | ClintDoesDev",
+    title: "Web Developer in Nigeria | Available Worldwide | ClintDoesDev",
     description:
-      "Custom websites, dashboards, e-commerce platforms, and full-stack web apps for businesses and founders in Nigeria.",
+      "Custom websites, dashboards, e-commerce platforms, and full-stack web apps for businesses and founders in Nigeria and worldwide.",
     url: pageUrl,
     images: [
       {
         url: socialImage,
         width: 1080,
         height: 1080,
-        alt: "Clinton, web developer in Nigeria",
+        alt: "Clinton, full-stack web developer available worldwide",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Web Developer in Nigeria | ClintDoesDev",
+    title: "Web Developer in Nigeria | Available Worldwide | ClintDoesDev",
     description:
-      "Custom websites, dashboards, e-commerce platforms, and full-stack web apps for businesses and founders in Nigeria.",
+      "Custom websites, dashboards, e-commerce platforms, and full-stack web apps for businesses and founders in Nigeria and worldwide.",
     images: [socialImage],
   },
 };
@@ -128,27 +130,27 @@ const structuredData = {
     {
       "@type": "Service",
       "@id": serviceId,
-      name: "Web Developer in Nigeria",
+      name: "Web Developer in Nigeria | Available Worldwide",
       description:
-        "Custom websites, dashboards, e-commerce platforms, and full-stack web apps for businesses and founders in Nigeria.",
+        "Custom websites, dashboards, e-commerce platforms, and full-stack web apps for businesses and founders in Nigeria and worldwide.",
       provider: {
         "@id": personId,
       },
       serviceType: [...siteConfig.serviceTypes],
       areaServed: {
-        "@type": "Country",
-        name: siteConfig.countryName,
+        "@type": "Place",
+        name: "Worldwide",
       },
       url: pageUrl,
     },
     {
       "@type": "WebPage",
       "@id": webpageId,
-      name: "Web Developer in Nigeria",
+      name: "Web Developer in Nigeria | Available Worldwide",
       url: pageUrl,
       inLanguage: siteConfig.language,
       description:
-        "Landing page for businesses looking to hire a web developer in Nigeria for custom websites and web applications.",
+        "Landing page for businesses looking to hire a web developer in Nigeria or remotely worldwide for custom websites and web applications.",
       about: {
         "@id": personId,
       },
@@ -178,12 +180,13 @@ export default function WebDeveloperInNigeriaPage() {
         >
           <span className="toneA">Web Developer</span>
           <br />
-          <span className="toneB">in Nigeria.</span>
+          <span className="toneB">for Nigeria and beyond.</span>
         </h1>
         <p>
           Custom websites and full-stack web applications for founders, startups,
           and businesses that want polished delivery, dependable architecture, and
-          SEO-aware implementation.
+          SEO-aware implementation whether they&apos;re in Nigeria or working remotely
+          from anywhere else.
         </p>
       </div>
 
@@ -196,10 +199,11 @@ export default function WebDeveloperInNigeriaPage() {
             lineHeight: 1.6,
           }}
         >
-          If you&apos;re searching for a web developer in Nigeria, I build modern
-          digital products that are fast, scalable, and crafted to support real
-          business goals. That includes marketing websites, dashboards, customer
-          portals, e-commerce experiences, and API-backed applications.
+          If you&apos;re searching for a web developer in Nigeria, this page should also
+          make one thing clear: I&apos;m not limited to local-only work. I build modern
+          digital products for clients across regions, including marketing websites,
+          dashboards, customer portals, e-commerce experiences, and API-backed
+          applications.
         </p>
 
         <div className="ctaRow" style={{ justifyContent: "flex-start", marginTop: 18 }}>
@@ -218,7 +222,7 @@ export default function WebDeveloperInNigeriaPage() {
         <h2>
           <span className="toneA">What I build,</span>
           <br />
-          <span className="toneB">for teams in Nigeria.</span>
+          <span className="toneB">for teams anywhere.</span>
         </h2>
         <p>Practical products designed to support launch, sales, operations, and growth.</p>
       </div>
@@ -272,7 +276,7 @@ export default function WebDeveloperInNigeriaPage() {
         </h2>
         <p>
           These are the things businesses usually want to know before hiring a web
-          developer in Nigeria.
+          developer for a serious website or web application project.
         </p>
       </div>
 

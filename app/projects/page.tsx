@@ -10,11 +10,11 @@ const socialImage = absoluteUrl(siteConfig.socialImage) ?? siteConfig.socialImag
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "Web development case studies and portfolio projects by a Nigeria-based full-stack developer building dashboards, storefronts, and production-ready web apps.",
+    "Web development case studies and portfolio projects by a full-stack developer building dashboards, storefronts, SaaS products, and production-ready web apps.",
   keywords: [
     ...siteConfig.keywords,
-    "web developer portfolio Nigeria",
-    "web development case studies Nigeria",
+    "web developer portfolio",
+    "web development case studies",
     "Next.js portfolio projects",
   ],
   alternates: siteUrl
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `Projects | ${siteConfig.siteName}`,
     description:
-      "Browse web application case studies and portfolio builds by a web developer in Nigeria.",
+      "Browse web application case studies and portfolio builds by a full-stack web developer.",
     url: siteUrl ? `${siteUrl}/projects` : undefined,
     images: [
       {
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `Projects | ${siteConfig.siteName}`,
     description:
-      "Browse web application case studies and portfolio builds by a web developer in Nigeria.",
+      "Browse web application case studies and portfolio builds by a full-stack web developer.",
     images: [socialImage],
   },
 };
@@ -73,8 +73,8 @@ export default function ProjectsPage() {
           <span className="toneB">real builds.</span>
         </h2>
         <p>
-          A curated selection of production-style projects from a web developer in
-          Nigeria focused on product quality, performance, and polished delivery.
+          A curated selection of production-style projects focused on product
+          quality, performance, and polished delivery.
         </p>
       </div>
 

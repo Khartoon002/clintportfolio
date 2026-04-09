@@ -17,8 +17,7 @@ export default function Projects() {
           <span className="toneB">real solutions.</span>
         </h2>
         <p>
-          Selected web application builds by a Nigeria-based full-stack web
-          developer.
+          Selected web application builds by a full-stack web developer.
         </p>
       </div>
 

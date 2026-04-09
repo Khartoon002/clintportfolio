@@ -93,17 +93,7 @@ export default function ProjectDetailClient({ project }: Props) {
       <div className="panel">
         <div className="detailGrid">
           <div>
-            <strong
-              style={{
-                fontFamily: "var(--serif2)",
-                letterSpacing: ".04em",
-                textTransform: "uppercase",
-                fontSize: 13,
-                color: "rgba(244,241,200,.75)",
-              }}
-            >
-              Tech Stack
-            </strong>
+            <strong className="detailSectionTitle">Tech Stack</strong>
             <div className="projectHighlights" style={{ marginTop: 6 }}>
               {project.stack.map((tech) => (
                 <span key={tech} className="pill">
@@ -114,25 +104,8 @@ export default function ProjectDetailClient({ project }: Props) {
           </div>
 
           <div>
-            <strong
-              style={{
-                fontFamily: "var(--serif2)",
-                letterSpacing: ".04em",
-                textTransform: "uppercase",
-                fontSize: 13,
-                color: "rgba(244,241,200,.75)",
-              }}
-            >
-              Delivery
-            </strong>
-            <p
-              style={{
-                margin: "4px 0 0",
-                color: "rgba(244,241,200,.70)",
-                fontSize: 15,
-                lineHeight: 1.6,
-              }}
-            >
+            <strong className="detailSectionTitle">Delivery</strong>
+            <p className="detailSectionCopy">
               Built in {project.duration} as a {project.role.toLowerCase()} with a
               focus on stable structure, polished presentation, and room for future
               features.
@@ -140,41 +113,12 @@ export default function ProjectDetailClient({ project }: Props) {
           </div>
 
           <div>
-            <strong
-              style={{
-                fontFamily: "var(--serif2)",
-                letterSpacing: ".04em",
-                textTransform: "uppercase",
-                fontSize: 13,
-                color: "rgba(244,241,200,.75)",
-              }}
-            >
-              About this build
-            </strong>
-            <p
-              style={{
-                margin: "4px 0 0",
-                color: "rgba(244,241,200,.70)",
-                fontSize: 15,
-                lineHeight: 1.6,
-              }}
-            >
-              {project.summary}
-            </p>
+            <strong className="detailSectionTitle">About this build</strong>
+            <p className="detailSectionCopy">{project.summary}</p>
           </div>
 
           <div>
-            <strong
-              style={{
-                fontFamily: "var(--serif2)",
-                letterSpacing: ".04em",
-                textTransform: "uppercase",
-                fontSize: 13,
-                color: "rgba(244,241,200,.75)",
-              }}
-            >
-              Key highlights
-            </strong>
+            <strong className="detailSectionTitle">Key highlights</strong>
             <ul className="detailList">
               {project.highlights.map((highlight) => (
                 <li key={highlight}>{highlight}</li>

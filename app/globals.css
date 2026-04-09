@@ -1190,10 +1190,31 @@ footer{padding: 80px 0 56px}
   gap: 18px;
 }
 
+.detailSectionTitle{
+  display:block;
+  font-family: var(--body);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .03em;
+  text-transform: uppercase;
+  color: rgba(243,239,222,.86);
+}
+
+.detailSectionCopy{
+  margin: 6px 0 0;
+  font-family: var(--body);
+  color: rgba(243,239,222,.62);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
 .detailList{
   margin: 10px 0 0;
   padding-left: 18px;
+  font-family: var(--body);
   color: rgba(244,241,200,.70);
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 .detailList li + li{
@@ -1202,6 +1223,7 @@ footer{padding: 80px 0 56px}
 
 .projectPanelNote{
   margin: 12px 0 0;
+  font-family: var(--body);
   color: rgba(244,241,200,.55);
   font-size: 14px;
   line-height: 1.55;
@@ -2432,4 +2454,302 @@ body.loaded .heroTitleLine.line2 .shine {
       0 1px 0 rgba(255,255,255,.05),
       0 16px 32px rgba(0,0,0,.32);
   }
+}
+
+.heroTitleHighlight {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.03em;
+}
+
+.heroHighlightRow {
+  display: block;
+  min-height: 1.04em;
+}
+
+.heroHighlightSlot {
+  display: inline-block;
+  position: relative;
+  padding: 0 0.16em 0.06em;
+}
+
+.heroHighlightCanvas {
+  position: absolute;
+  inset: 0;
+  border-radius: 0.1em;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.heroHighlightMain,
+.heroHighlightEdgeLeft,
+.heroHighlightEdgeRight,
+.heroHighlightSmear,
+.heroHighlightTip {
+  position: absolute;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.heroHighlightMain {
+  inset: 0;
+  background: var(--yellow);
+  border-radius: 0.08em;
+}
+
+.heroHighlightEdgeLeft {
+  left: -0.04em;
+  top: 14%;
+  bottom: 14%;
+  width: 0.1em;
+  background: rgba(201,181,42,.95);
+  border-radius: 0.08em 0 0 0.08em;
+}
+
+.heroHighlightEdgeRight {
+  right: -0.04em;
+  top: 18%;
+  bottom: 18%;
+  width: 0.07em;
+  background: rgba(201,181,42,.95);
+  border-radius: 0 0.08em 0.08em 0;
+}
+
+.heroHighlightSmear {
+  left: 8%;
+  right: 8%;
+  bottom: 0.08em;
+  height: 0.07em;
+  background: rgba(180,140,0,.38);
+  border-radius: 999px;
+}
+
+.heroHighlightTip {
+  top: 10%;
+  left: -0.12em;
+  width: 0.16em;
+  height: 80%;
+  background: rgba(232,212,77,.58);
+  border-radius: 999px 0 0 999px;
+  transform-origin: right;
+}
+
+.heroHighlightText {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  color: #111;
+  transition: color 0.16s ease;
+}
+
+.heroHighlightText.unhighlighted {
+  color: rgba(243,239,222,.97);
+}
+
+.heroHighlightSlot.swap-out .heroHighlightText,
+.heroHighlightText.swap-out {
+  animation: heroSwapOut 0.22s ease forwards;
+}
+
+.heroHighlightText.swap-in {
+  animation: heroSwapIn 0.3s ease forwards;
+}
+
+.heroHighlightSlot.is-in .heroHighlightTip,
+.heroHighlightSlot.is-hold .heroHighlightTip {
+  transition: transform 0.12s ease;
+  transform: scaleX(1);
+}
+
+.heroHighlightSlot.is-in .heroHighlightEdgeLeft,
+.heroHighlightSlot.is-hold .heroHighlightEdgeLeft {
+  transition: transform 0.1s ease 0.06s;
+  transform: scaleX(1);
+}
+
+.heroHighlightSlot.is-in .heroHighlightMain,
+.heroHighlightSlot.is-hold .heroHighlightMain {
+  transition: transform 0.38s cubic-bezier(0.2, 0, 0.1, 1) 0.06s;
+  transform: scaleX(1);
+}
+
+.heroHighlightSlot.is-in .heroHighlightSmear,
+.heroHighlightSlot.is-hold .heroHighlightSmear {
+  transition: transform 0.25s ease 0.28s;
+  transform: scaleX(1);
+}
+
+.heroHighlightSlot.is-in .heroHighlightEdgeRight,
+.heroHighlightSlot.is-hold .heroHighlightEdgeRight {
+  transition: transform 0.12s ease 0.28s;
+  transform: scaleX(1);
+}
+
+.heroHighlightSlot.is-out .heroHighlightSmear {
+  transition: transform 0.15s ease;
+  transform-origin: right;
+  transform: scaleX(0);
+}
+
+.heroHighlightSlot.is-out .heroHighlightEdgeRight {
+  transition: transform 0.12s ease;
+  transform-origin: right;
+  transform: scaleX(0);
+}
+
+.heroHighlightSlot.is-out .heroHighlightMain {
+  transition: transform 0.28s cubic-bezier(0.8, 0, 0.9, 1) 0.06s;
+  transform-origin: right;
+  transform: scaleX(0);
+}
+
+.heroHighlightSlot.is-out .heroHighlightEdgeLeft {
+  transition: transform 0.12s ease 0.06s;
+  transform-origin: right;
+  transform: scaleX(0);
+}
+
+.heroHighlightSlot.is-out .heroHighlightTip {
+  transition: transform 0.1s ease 0.28s;
+  transform-origin: right;
+  transform: scaleX(0);
+}
+
+@keyframes heroSwapOut {
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes heroSwapIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .heroTitleHighlight {
+    gap: 0.08em;
+  }
+
+  .heroHighlightSlot {
+    padding-left: 0.12em;
+    padding-right: 0.12em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroHighlightText.swap-in,
+  .heroHighlightText.swap-out {
+    animation: none;
+  }
+}
+
+.panel,
+.divider,
+.skill,
+.proj,
+.chip,
+.badge,
+.serviceChip,
+.btnPrimary,
+.sectionHead h2 .toneB,
+.end h2 .toneB,
+footer h2 .toneB,
+.divider strong,
+.projBody h3 {
+  position: relative;
+}
+
+.panel,
+.divider,
+.skill,
+.proj,
+.chip,
+.badge,
+.serviceChip,
+.btnPrimary {
+  overflow: hidden;
+}
+
+.panel::before,
+.divider::before,
+.skill::before,
+.proj::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    rgba(243,223,114,0),
+    rgba(243,223,114,.30),
+    rgba(255,255,255,.18),
+    rgba(243,223,114,0)
+  );
+  pointer-events: none;
+  opacity: .85;
+}
+
+.chip::after,
+.badge::after,
+.serviceChip::after,
+.btnPrimary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,.12) 0%,
+    rgba(255,255,255,.04) 24%,
+    rgba(255,255,255,0) 55%
+  );
+  pointer-events: none;
+}
+
+.sectionHead h2 .toneB::after,
+.end h2 .toneB::after,
+footer h2 .toneB::after,
+.divider strong::after,
+.projBody h3::after {
+  content: "";
+  position: absolute;
+  left: -0.08em;
+  right: -0.08em;
+  bottom: 0.08em;
+  height: 0.34em;
+  background: linear-gradient(
+    90deg,
+    rgba(243,223,114,.16),
+    rgba(243,223,114,.34),
+    rgba(243,223,114,.10)
+  );
+  border-radius: 0.14em;
+  transform: scaleX(.94);
+  transform-origin: left;
+  z-index: -1;
+  opacity: .8;
+}
+
+.divider strong::after,
+.projBody h3::after {
+  height: 0.26em;
+  bottom: 0.02em;
+}
+
+.chip:hover,
+.badge:hover,
+.serviceChip:hover,
+.btnPrimary:hover {
+  border-color: rgba(243,223,114,.28);
 }

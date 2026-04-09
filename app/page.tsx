@@ -2,18 +2,19 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Projects from "@/components/projects";
 import { projectStats } from "@/lib/projectsData";
 import { siteConfig } from "@/lib/site-config";
 
 type ContactChannel = "email" | "whatsapp";
 
-const CONTACT_EMAIL = (process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "").trim();
-const WHATSAPP_NUMBER = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "").replace(
-  /\D/g,
-  ""
-);
+const CONTACT_EMAIL = (
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "clintdoesdev@gmail.com"
+).trim();
+const WHATSAPP_NUMBER = (
+  process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "08086137316"
+).replace(/\D/g, "");
 const PUBLIC_SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "").trim();
 const WEBSITE_URL = PUBLIC_SITE_URL
   ? PUBLIC_SITE_URL.startsWith("http://") || PUBLIC_SITE_URL.startsWith("https://")
@@ -24,13 +25,26 @@ const SOCIAL_IMAGE = WEBSITE_URL
   ? new URL(siteConfig.socialImage, `${WEBSITE_URL}/`).toString()
   : siteConfig.socialImage;
 
-const DEFAULT_CONTACT_MESSAGE =
-  "Hi Clinton, I'd like to discuss a new project with you.";
+const HERO_WORDS_PRIMARY = [
+  "websites",
+  "SaaS apps",
+  "dashboards",
+  "products",
+  "landing pages",
+];
+
+const HERO_WORDS_ACCENT = [
+  "convert",
+  "perform",
+  "scale",
+  "ship fast",
+  "stand out",
+];
 
 const stats = [
   { number: "2.5", label: "Years building" },
   { number: projectStats.totalLabel, label: "Projects shipped" },
-  { number: "4", label: "Countries served" },
+  { number: "2", label: "Countries served" },
   { number: "48h", label: "Avg response time" },
 ];
 
@@ -132,13 +146,13 @@ const homeStructuredData = {
     {
       "@type": "Service",
       "@id": serviceId,
-      name: "Web Development Services in Nigeria",
+      name: "Web Development Services",
       description:
-        "Custom websites, dashboards, APIs, and full-stack web applications for founders, startups, and businesses in Nigeria.",
+        "Custom websites, dashboards, APIs, and full-stack web applications for founders, startups, and businesses worldwide.",
       serviceType: [...siteConfig.serviceTypes],
       areaServed: {
-        "@type": "Country",
-        name: siteConfig.countryName,
+        "@type": "Place",
+        name: "Worldwide",
       },
       provider: {
         "@id": personId,
@@ -173,70 +187,86 @@ const homeStructuredData = {
 export default function HomePage() {
   const [contactModalOpen, setContactModalOpen] = useState(false);
   const [contactChannel, setContactChannel] = useState<ContactChannel>("email");
-  const [contactMessage, setContactMessage] = useState("");
-  const [contactNotice, setContactNotice] = useState("");
+  const [heroWordIndex, setHeroWordIndex] = useState(0);
+  const [heroWordPhase, setHeroWordPhase] = useState<"in" | "hold" | "out">("in");
+  const [heroWordSwapKey, setHeroWordSwapKey] = useState(0);
 
   const emailConfigured = CONTACT_EMAIL.includes("@");
   const whatsappConfigured = WHATSAPP_NUMBER.length >= 10;
 
+  useEffect(() => {
+    let cancelled = false;
+    const timers: ReturnType<typeof setTimeout>[] = [];
+
+    const queue = (callback: () => void, delay: number) => {
+      const timer = setTimeout(() => {
+        if (!cancelled) {
+          callback();
+        }
+      }, delay);
+
+      timers.push(timer);
+    };
+
+    const runCycle = () => {
+      setHeroWordPhase("in");
+
+      queue(() => {
+        setHeroWordPhase("hold");
+      }, 520);
+
+      queue(() => {
+        setHeroWordPhase("out");
+      }, 2280);
+
+      queue(() => {
+        setHeroWordIndex((current) => (current + 1) % HERO_WORDS_PRIMARY.length);
+        setHeroWordSwapKey((current) => current + 1);
+        runCycle();
+      }, 2660);
+    };
+
+    runCycle();
+
+    return () => {
+      cancelled = true;
+      timers.forEach((timer) => clearTimeout(timer));
+    };
+  }, []);
+
   const openContactModal = (channel: ContactChannel = contactChannel) => {
     setContactChannel(channel);
-    setContactNotice("");
     setContactModalOpen(true);
   };
 
   const closeContactModal = () => {
-    setContactNotice("");
     setContactModalOpen(false);
   };
 
-  const copyMessage = async () => {
-    const msg = contactMessage.trim() || DEFAULT_CONTACT_MESSAGE;
-
-    try {
-      await navigator.clipboard.writeText(msg);
-      setContactNotice("Your message has been copied and is ready to send.");
-    } catch {
-      setContactNotice(
-        "Copying failed on this device. You can still select the text manually."
-      );
-    }
-  };
-
-  const handleSend = async () => {
-    const msg = contactMessage.trim() || DEFAULT_CONTACT_MESSAGE;
-
+  const handleSend = () => {
     if (contactChannel === "email" && emailConfigured) {
-      const subject = "Project inquiry from portfolio";
-      const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-        subject
-      )}&body=${encodeURIComponent(msg)}`;
+      const mailto = `mailto:${CONTACT_EMAIL}`;
       window.location.href = mailto;
       setContactModalOpen(false);
       return;
     }
 
     if (contactChannel === "whatsapp" && whatsappConfigured) {
-      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+      const url = `https://wa.me/234${WHATSAPP_NUMBER.replace(/^0/, "")}`;
       window.open(url, "_blank", "noopener,noreferrer");
       setContactModalOpen(false);
       return;
     }
-
-    await copyMessage();
-    setContactNotice(
-      "This contact channel is not configured yet, so the message was copied instead."
-    );
   };
 
   const contactDestination =
     contactChannel === "email"
       ? emailConfigured
         ? `Email: ${CONTACT_EMAIL}`
-        : "Email contact is being updated. You can still copy your message below."
+        : "Email contact is being updated."
       : whatsappConfigured
-        ? `WhatsApp: +${WHATSAPP_NUMBER}`
-        : "WhatsApp contact is being updated. You can still copy your message below.";
+        ? "WhatsApp chat"
+        : "WhatsApp contact is being updated.";
 
   return (
     <>
@@ -254,15 +284,49 @@ export default function HomePage() {
             <span className="chip">Fast delivery</span>
           </div>
 
-          <h1 className="heroTitle" aria-label="I build products that perform.">
-            <span className="heroTitleLine line1" data-text="I build products">
-              <span className="fill">I build products</span>
-              <span className="shine" aria-hidden />
+          <h1
+            className="heroTitle heroTitleHighlight"
+            aria-label={`I build ${HERO_WORDS_PRIMARY.join(", ")} that ${HERO_WORDS_ACCENT.join(", ")}.`}
+          >
+            <span className="heroHighlightRow">
+              <span className="toneA">I build</span>
             </span>
-            <br />
-            <span className="heroTitleLine line2" data-text="that perform.">
-              <span className="fill">that perform.</span>
-              <span className="shine" aria-hidden />
+            <span className="heroHighlightRow">
+              <span className={`heroHighlightSlot heroHighlightSlotPrimary is-${heroWordPhase}`}>
+                <span className="heroHighlightCanvas" aria-hidden>
+                  <span className="heroHighlightTip" />
+                  <span className="heroHighlightEdgeLeft" />
+                  <span className="heroHighlightMain" />
+                  <span className="heroHighlightSmear" />
+                  <span className="heroHighlightEdgeRight" />
+                </span>
+                <span
+                  key={`primary-${heroWordSwapKey}`}
+                  className={`heroHighlightText ${heroWordPhase === "out" ? "unhighlighted" : ""} swap-in`}
+                >
+                  {HERO_WORDS_PRIMARY[heroWordIndex]}
+                </span>
+              </span>
+            </span>
+            <span className="heroHighlightRow">
+              <span className="toneA">that</span>
+            </span>
+            <span className="heroHighlightRow">
+              <span className={`heroHighlightSlot heroHighlightSlotAccent is-${heroWordPhase}`}>
+                <span className="heroHighlightCanvas" aria-hidden>
+                  <span className="heroHighlightTip" />
+                  <span className="heroHighlightEdgeLeft" />
+                  <span className="heroHighlightMain" />
+                  <span className="heroHighlightSmear" />
+                  <span className="heroHighlightEdgeRight" />
+                </span>
+                <span
+                  key={`accent-${heroWordSwapKey}`}
+                  className={`heroHighlightText ${heroWordPhase === "out" ? "unhighlighted" : ""} swap-in`}
+                >
+                  {HERO_WORDS_ACCENT[heroWordIndex]}
+                </span>
+              </span>
             </span>
           </h1>
 
@@ -270,13 +334,13 @@ export default function HomePage() {
             I&apos;m <span style={{ color: "var(--yellow)", fontWeight: 700 }}>Clinton</span>
             {" "}- I build websites and digital products end to end. Landing pages,
             marketing sites, SaaS platforms, dashboards, and everything in between.
-            Based in Nigeria, shipping for clients across Africa and beyond.
+            Working with founders, teams, and businesses across regions.
           </p>
 
           <div className="heroPortrait">
             <Image
               src="/assets/profilepic.jpeg"
-              alt="Clinton, a web developer in Nigeria"
+              alt="Clinton, full-stack web developer"
               width={1080}
               height={1080}
               priority
@@ -370,8 +434,8 @@ export default function HomePage() {
           <p>
             I build whatever the project needs - a sharp landing page that converts,
             a marketing site that ranks, a SaaS product that scales, or a full-stack
-            app with a real backend. Based in Nigeria, I work with founders, agencies,
-            and businesses who need things built properly and shipped fast.
+            app with a real backend. I work with founders, agencies, and businesses
+            who need things built properly and shipped fast.
           </p>
         </div>
 
@@ -499,8 +563,7 @@ export default function HomePage() {
             }}
           >
             Landing page, marketing site, SaaS platform, internal tool, or a full
-            product from zero - I build all of it. Based in Nigeria, available
-            worldwide.
+            product from zero - I build all of it, remotely and across markets.
           </p>
 
           <div className="availBadge">
@@ -546,7 +609,7 @@ export default function HomePage() {
           </div>
 
           <div className="copyright">
-            &copy; {new Date().getFullYear()} Clinton | Full-stack &amp; Web3 Developer | Nigeria
+            &copy; {new Date().getFullYear()} Clinton | Full-stack &amp; Web3 Developer
           </div>
         </div>
       </footer>
@@ -587,7 +650,6 @@ export default function HomePage() {
                 }
                 onClick={() => {
                   setContactChannel("email");
-                  setContactNotice("");
                 }}
               >
                 Email
@@ -600,7 +662,6 @@ export default function HomePage() {
                 }
                 onClick={() => {
                   setContactChannel("whatsapp");
-                  setContactNotice("");
                 }}
               >
                 WhatsApp
@@ -610,26 +671,10 @@ export default function HomePage() {
             <p className="contactHelper">{contactDestination}</p>
 
             <div className="contactModalBody">
-              <label>
-                <span>Message</span>
-                <textarea
-                  rows={4}
-                  placeholder={
-                    contactChannel === "email"
-                      ? "Hi Clinton, I'd like to work with you on..."
-                      : "Hi Clinton, I saw your portfolio and I'd like to talk about..."
-                  }
-                  value={contactMessage}
-                  onChange={(event) => setContactMessage(event.target.value)}
-                />
-              </label>
-            </div>
-
-            {contactNotice ? (
-              <p className="contactNotice" role="status">
-                {contactNotice}
+              <p className="contactHelper" style={{ margin: 0 }}>
+                Choose a channel below and you&apos;ll be taken there immediately.
               </p>
-            ) : null}
+            </div>
 
             <div className="contactModalActions">
               <button
@@ -638,18 +683,8 @@ export default function HomePage() {
                 onClick={handleSend}
               >
                 <span className="text">
-                  {contactChannel === "email"
-                    ? "Send via email"
-                    : "Send via WhatsApp"}
+                  {contactChannel === "email" ? "Open email" : "Open WhatsApp"}
                 </span>
-                <span className="circle" aria-hidden />
-              </button>
-              <button
-                type="button"
-                className="btn btnSm"
-                onClick={copyMessage}
-              >
-                <span className="text">Copy message</span>
                 <span className="circle" aria-hidden />
               </button>
               <button

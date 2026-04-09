@@ -1,19 +1,21 @@
 [
   {
-    "slug": "xoinft-dashboard",
-    "title": "Xoi - NFT & Crypto Dashboard",
-    "desc": "A full Web3 platform with NFT trading UI, crypto portfolio tracking, a node-based drag-and-drop editor, and a real-time chat interface.",
-    "summary": "Xoi is a multi-surface Web3 product built across four interconnected templates - dashboard, landing page, chat UI, and a visual node editor. The design system uses Syne and DM Sans with a purple/cyan/gold accent palette for a premium crypto-native feel.",
-    "imageUrl": "/assets/project1.jpg",
-    "stack": ["Next.js", "React", "TypeScript", "Ethers.js", "Web3", "Tailwind"],
+    "slug": "spendify-dashboard",
+    "title": "Spendify - Personal Finance Dashboard",
+    "desc": "A polished personal finance dashboard for tracking income, expenses, budgets, savings goals, and transaction activity through a clean analytics-focused interface.",
+    "summary": "Spendify is a frontend-first finance product built with the Next.js App Router. It brings together summary stat cards, yearly income-versus-expense charts, category breakdown visuals, budget tracking, savings goals, and transaction views inside a responsive dashboard shell.",
+    "imageUrl": "/assets/spendify.jpg",
+    "liveUrl": "https://spendify-chi.vercel.app/",
+    "repoUrl": "https://github.com/clintdoesdev/spendify.git",
+    "stack": ["Next.js", "React", "TypeScript", "Tailwind CSS", "Recharts", "Lucide React"],
     "highlights": [
-      "Drag-and-drop visual node editor for on-chain logic flows",
-      "Real-time chat UI with Web3 wallet-aware sessions",
-      "NFT portfolio dashboard with live price tracking"
+      "Finance overview dashboard with income, expense, and savings stat cards",
+      "Interactive analytics using Recharts for category and monthly trend visualisation",
+      "Dedicated budgets, goals, and transactions views inside a reusable app shell"
     ],
-    "duration": "4 weeks",
-    "role": "Full Web3 build",
-    "year": "2025"
+    "duration": "1 week",
+    "role": "Frontend dashboard build",
+    "year": "2026"
   },
   {
     "slug": "magnus-skill-mart",

@@ -54,7 +54,7 @@ export async function generateMetadata({
 
   const projectUrl = siteUrl ? `${siteUrl}/projects/${project.slug}` : undefined;
   const projectImage = absoluteUrl(project.imageUrl) ?? project.imageUrl;
-  const description = `${project.desc} Case study by a web developer in Nigeria using ${project.stack.join(
+  const description = `${project.desc} Case study by a full-stack web developer using ${project.stack.join(
     ", "
   )}.`;
 
